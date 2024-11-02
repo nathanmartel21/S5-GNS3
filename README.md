@@ -149,7 +149,7 @@ au réseau IPv6 N99.
 
 ### 1.6 Le réseau Cloud
 
-<blank>
+blank
 
 ## 2 Annexe
 
