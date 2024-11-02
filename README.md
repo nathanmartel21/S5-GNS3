@@ -6,7 +6,7 @@
 
 **Contraintes 1 (20 pts) :** Les serveurs TS1, TS2 et TS99 sont des machines virtuelles MicroCore. Chaque serveur dispose de 1 interface Ethernet. Les serveurs sont nommés.
 - Serveurs TS1, TS2 et TS99 OK. Redirection du stdout vers ttySO OK. Les serveurs sont nommés en modifiant dans le fichier /opt/bootsync.sh : /usr/bin/sethostname = TS[n].
-- Date : Fait le 02/11/2024
+- Date : `Fait` le 02/11/2024
 
 **Contraintes 2 (5pts) :** Le serveur TS2 est connecté au réseau IPv4 N02. Le serveur TS1 est connecté au réseau IPv4 N01.
 - Non fait
@@ -157,14 +157,78 @@ au réseau IPv6 N99.
 
 #### 2.1.1 Serveur SSH
 
+- Activer le serveur SSH :
+```bash
+vyos@Routeur# set service ssh
+```
+- Autoriser l’accès SSH à l’utilisateur vyos :
+```bash
+vyos@Routeur# set service ssh access-control allow user vyos
+```
 
+### 2.2 Protocole NAT
 
+- Définir nom de l’interface externe eth0 (interface du réseau public) :
+```bash
+vyos@Routeur# set nat source rule 100 outbound-interface 'eth0'
+```
+- Définir la plage d’adresse 200.1.0.0/16 pouvant être translatée (réseau privé) :
+```bash
+set nat source rule 100 source address '200.1.0.0/16'
+```
+- Puis définir le mode de translation :
+```bash
+vyos@Routeur# set nat source rule 100 translation address masquerade
+```
 
+### 2.3 MicroCore
 
+#### 2.3.1 Client SSH
 
+- Installer dropbear
+- Utiliser le client SSH pour accéder à l’équipement identifié par l’adresse d’interface 200.1.99.1, avec le compte utilisateur vyos :
+```bash
+tc@TA1:~$ dbclient vyos@200.1.99.1
+```
 
+#### 2.3.2 Sous-interface ethernet
 
+- Créer la sous interface eth0.10 de l’interface physique eth0 associée au VLAN 10 (les paquets seront « taggués » en conséquence) :
+```bash
+tc@TS1:~$ sudo vconfig add eth0 10
+```
+- Activer l’interface physique et la sous-interface :
+```bash
+tc@TS1:~$ sudo ip link set dev eth0 up
+tc@TS1:~$ sudo ip link set dev eth0.10 up
+```
 
+#### 2.3.3 Serveur DHCP
 
+- Créer le fichier de configuration udhcpd.conf pour l’interface eth0.10 :
+```bash
+tc@TS1:~$ more /opt/udhcpd.conf
+start 200.1.10.50                 ← 1ère adresse en bail
+end 200.1.10.100                  ← dernière adresse en bail
+interface eth0.10                 ← interface de réception des requêtes
+option subnet 255.255.255.0       ← masque des adresses en bail
+option router 200.1.10.1          ← adresse du routeur par défaut
+```
+- Activer l’interface physique et la sous-interface :
+```bash
+ttc@TS1:~$ udhcpd -f /opt/udhcpd.conf &
+```
+- Faire de même pour l’interface eth0.20.
 
+### 2.3 Openvswitch
 
+- Par défaut, les interfaces réseaux sont en mode trunk, et sont toutes associées au bridge br0 ;
+- Configurer l’interface eth5 en mode access et l’associer au VLAN 99 :
+```bash
+/ # ovs-vsctl set port eth5 tag=99
+```
+- Créer et configurer l’interface VLAN 99 associée au VLAN 99 dans le bridge br0 :
+```bash
+/ # ovs-vsctl add-ports br0 vlan99 tag=99 – – bset interface vlan99 type=internal
+```
+- Assigner une adresse IPv4 à l’interface.
