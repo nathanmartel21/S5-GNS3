@@ -9,8 +9,17 @@
 - Date : `Fait` le 02/11/2024
 
 **Contraintes 2 (5pts) :** Le serveur TS2 est connecté au réseau IPv4 N02. Le serveur TS1 est connecté au réseau IPv4 N01.
-- Non fait
-- Date : 
+- Adressage persistent OK.
+```bash
+tce-load -wi iproute2
+touch /opt/eth0.sh
+
+#!/bin/sh
+sudo ip addr add 200.8.[1|2].1/24 dev eth0
+sudo ip route add default via 200.8.[1|2].254 dev eth0 
+```
+- Mettre dans /opt/bootsync.sh **et avant le l'activation du getty !!** : /opt/eth0.sh
+- Date : `Fait` le 02/11/2024
 
 **Contraintes 3 (1pt) :** Le serveur TS99 est connecté aux réseaux IPv4 N10, N20 et N99.
 - Non fait
