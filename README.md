@@ -23,6 +23,10 @@ sudo ip -6 addr add 2001:0:8:1::[1|2]/64 dev eth0
 sudo ip -6 route add default via 2001:0:8:1::254
 ```
 - Mettre dans /opt/bootsync.sh **et avant le l'activation du getty !!** : sudo modprobe ipv6 et /opt/eth0.sh
+- Sauvegarder les modifications :
+```bash
+  filetool.sh -b
+```
 - Date : `Fait` le 03/11/2024
 
 **Contraintes 3 (1pt) :** Le serveur TS99 est connecté aux réseaux IPv4 N10, N20 et N99.
