@@ -19,7 +19,7 @@ touch /opt/eth0.sh
 #!/bin/sh
 sudo ip addr add 200.8.[1|2].1/24 dev eth0
 sudo ip route add default via 200.8.[1|2].254 dev eth0
-sudo ip -6 addr add 2001:0:8:1::[1|2]/64 dev eth0
+sudo ip -6 addr add 2001:0:8:[1|2]::1/64 dev eth0
 sudo ip -6 route add default via 2001:0:8:1::254
 ```
 - Mettre dans /opt/bootsync.sh **et avant le l'activation du getty !!** : sudo modprobe ipv6 et /opt/eth0.sh
