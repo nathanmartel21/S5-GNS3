@@ -70,8 +70,33 @@ au réseau IPv6 N99.
 - Date :
 
 **Contraintes 16 (1pt) :** Le terminal TD1 peut « pinguer » l’adresse 8.8.8.8.
-- Non fait
-- Date :
+- Sur R2 :
+  ```bash
+  vyos@R2# set nat source rule 100 outbound-interface name eth1
+  vyos@R2# set nat source rule 100 source address 200.8.1.0/24
+  vyos@R2# set nat source rule 100 translation address masquerade
+
+  vyos@R2# set nat source rule 101 outbound-interface name eth1
+  vyos@R2# set nat source rule 101 source address 200.8.2.0/24
+  vyos@R2# set nat source rule 101 translation address masquerade
+
+  vyos@R2# set nat source rule 102 outbound-interface name eth1
+  vyos@R2# set nat source rule 102 source address 200.8.10.0/24
+  vyos@R2# set nat source rule 102 translation address masquerade
+
+  vyos@R2# set nat source rule 103 outbound-interface name eth1
+  vyos@R2# set nat source rule 103 source address 200.8.20.0/24
+  vyos@R2# set nat source rule 103 translation address masquerade
+
+  vyos@R2# set nat source rule 104 outbound-interface name eth1
+  vyos@R2# set nat source rule 104 source address 200.8.99.0/24
+  vyos@R2# set nat source rule 104 translation address masquerade
+
+  commit
+  save
+  exit
+  ```
+- Date : `Fait` le 03/11/2024
 
 **Contraintes 17 (1pt) :** Le terminal TD1 peut « pinguer » en IPv6 le terminal TF1.
 - Non fait
