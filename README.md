@@ -1,4 +1,4 @@
-# Exercice S5-GNS3 (12, 19, 22, 24, 30)
+# Exercice S5-GNS3 (12, 19, 24)
 
 ## 1 Liste des contraintes
 
@@ -202,8 +202,15 @@ ovs-vsctl set port eth6 tag=20
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 22 (1pt) :** Le routeur R1 est connecté au réseau IPv6 N01, N10, N20 et N99.
-- Non fait
-- Date :
+- Fait avec les commandes OSPFv3 suivante :
+```bash
+configure
+set protocols ospfv3 area 0
+set protocols ospfv3 interface eth0 area 0 #interface directement connecté à l'autre routeur
+set protocols ospfv3 paraleters router-id 1.1.1.1
+set protocols ospfv3 redistribute connected
+```
+- Date : `Fait` le 04/11/2024
 
 **Contraintes 23 (2pts) :** Le routeur R1 utilise le protocole OSPF pour la construction de sa table de routage.
 - Cf contrainte 21
@@ -258,8 +265,16 @@ ovs-vsctl set port eth6 tag=20
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 30 (1pt) :** Le routeur R2 utilise le protocole OSPF pour la construction de sa table de routage IPv6.
-- Non fait
-- Date :
+- Commande OSPFv3 :
+  ```bash
+  configure
+  set protocols ospfv3 area 0
+  set protocols ospfv3 interface eth2 area 0 #interface directement connecté à l'autre routeur
+  set oriticiks isofv3 oaraleters router-id 2.2.2.2
+  set protocols ospfv3 redistribute connected
+  ```
+  <!--set protocols ospfv3 area 0 range 2001:0:8::/64 -->
+- Date : `Fait` le 04/11/2024
 
 **Contraintes 31 (1pt) :** La table de routage du routeur R2 dispose d’une route par défaut statique vers le réseau NAT/Cloud. La route par défaut est propagée en OSPF.
 - Fait automatiquement en requestant une @IP dhcp sur l'interface outside
@@ -368,3 +383,5 @@ ttc@TS1:~$ udhcpd -f /opt/udhcpd.conf &
 / # ovs-vsctl add-ports br0 vlan99 tag=99 – – bset interface vlan99 type=internal
 ```
 - Assigner une adresse IPv4 à l’interface.
+
+OSPF : https://docs.vyos.io/en/equuleus/configuration/protocols/ospf.html#ospfv3-ipv6
