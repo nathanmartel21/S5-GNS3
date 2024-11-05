@@ -199,7 +199,6 @@ ovs-vsctl set port eth6 tag=20
   <!--set protocols ospf default-information originate always
   set protocols ospf default-information originate metric 10
   set protocols ospf default-information originate metric-type 2-->
-  ``` 
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 22 (1pt) :** Le routeur R1 est connecté au réseau IPv6 N01, N10, N20 et N99.
