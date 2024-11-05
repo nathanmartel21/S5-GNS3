@@ -265,7 +265,6 @@ set protocols ospfv3 redistribute connected
   set protocols ospf default-information originate always
   set protocols ospf default-information originate metric 10
   set protocols ospf default-information originate metric-type 2-->
-  ``` 
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 30 (1pt) :** Le routeur R2 utilise le protocole OSPF pour la construction de sa table de routage IPv6.
