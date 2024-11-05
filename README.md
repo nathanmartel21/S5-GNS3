@@ -1,4 +1,4 @@
-# Exercice S5-GNS3 (12, 19, 24)
+# Exercice S5-GNS3 (12, 24)
 
 ## 1 Liste des contraintes
 
@@ -169,9 +169,9 @@ ovs-vsctl set port eth6 tag=20
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 19 (1pt) :** Le terminal TD1 peut « pinguer » en IPv6 le serveur TS2.
-- Non fait
-- Date :
-
+- Cf contrainte 2
+- Date : `Fait` le 05/11/2024
+- 
 ### 1.3 Le routeur R1
 
 **Contraintes 20 (20pts) :** Le routeur R1 est une machine virtuelle VyOS. Il dispose de 2 interfaces Ethernet. Le routeur R1 est nommé.
