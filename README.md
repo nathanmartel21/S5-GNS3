@@ -195,7 +195,6 @@ ovs-vsctl set port eth6 tag=20
   set protocols ospf area 0 network 200.8.10.0/24
   set protocols ospf area 0 network 200.8.20.0/24
   set protocols ospf area 0 network 200.8.99.0/24
-  set protocols ospfv parameters router-id 1.1.1.1
   ``` 
   <!--set protocols ospf default-information originate always
   set protocols ospf default-information originate metric 10
