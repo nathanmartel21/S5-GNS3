@@ -195,9 +195,11 @@ ovs-vsctl set port eth6 tag=20
   set protocols ospf area 0 network 200.8.10.0/24
   set protocols ospf area 0 network 200.8.20.0/24
   set protocols ospf area 0 network 200.8.99.0/24
-  set protocols ospf default-information originate always
+  set protocols ospfv parameters router-id 1.1.1.1
+  ``` 
+  <!--set protocols ospf default-information originate always
   set protocols ospf default-information originate metric 10
-  set protocols ospf default-information originate metric-type 2
+  set protocols ospf default-information originate metric-type 2-->
   ``` 
 - Date : `Fait` le 04/11/2024
 
@@ -206,8 +208,9 @@ ovs-vsctl set port eth6 tag=20
 ```bash
 configure
 set protocols ospfv3 area 0
-set protocols ospfv3 interface eth0 area 0 #interface directement connecté à l'autre routeur
 set protocols ospfv3 paraleters router-id 1.1.1.1
+--
+set protocols ospfv3 interface eth0 area 0 #interface directement connecté à l'autre routeur
 set protocols ospfv3 redistribute connected
 ```
 - Date : `Fait` le 04/11/2024
@@ -258,9 +261,11 @@ set protocols ospfv3 redistribute connected
   set protocols ospf parameters router-id 2.2.2.2
   set protocols ospf area 0 network 200.8.1.0/24
   set protocols ospf area 0 network 200.8.2.0/24
+  ```
+  <!--
   set protocols ospf default-information originate always
   set protocols ospf default-information originate metric 10
-  set protocols ospf default-information originate metric-type 2
+  set protocols ospf default-information originate metric-type 2-->
   ``` 
 - Date : `Fait` le 04/11/2024
 
@@ -269,8 +274,9 @@ set protocols ospfv3 redistribute connected
   ```bash
   configure
   set protocols ospfv3 area 0
+  set protocols ospfv3 parameters router-id 2.2.2.2
+  --
   set protocols ospfv3 interface eth2 area 0 #interface directement connecté à l'autre routeur
-  set oriticiks isofv3 oaraleters router-id 2.2.2.2
   set protocols ospfv3 redistribute connected
   ```
   <!--set protocols ospfv3 area 0 range 2001:0:8::/64 -->
