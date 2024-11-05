@@ -221,6 +221,17 @@ set protocols ospfv3 redistribute connected
 - Non fait
 - Date :
 
+**AJOUT ROUTE PAR DÉFAUT** Default gateway vers R2 :
+
+```bash
+configure
+set protocols static route 0.0.0.0/0 next-hop 200.8.1.254
+set protocols static route6 ::/0 next-hop 2001:0:8:1::254
+commit
+save
+exit
+```
+
 ### 1.4 Le routeur R2
 
 **Contraintes 25 (20pts) :** Le routeur R2 est une machine virtuelle VyOS. Il dispose de 3 interfaces Ethernet. Le routeur R2 est nommé.
