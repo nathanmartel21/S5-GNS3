@@ -299,12 +299,17 @@ exit
 **Contraintes 32 (2pts) :** Le ou les commutateurs supportant les réseaux IP N10, N20 et N99 doivent être « pingables » depuis le terminal TA1.
 - Chercher pour rendre Frugal :
   ```bash
-  ip addr add 200.8.10.123/24 dev eth1
-  ip addr add 200.8.10.124/24 dev eth2
-  ip addr add 200.8.99.123/24 dev eth3
-  ip addr add 200.8.99.124/24 dev eth4
-  ip addr add 200.8.20.123/24 dev eth5
-  ip addr add 200.8.20.124/24 dev eth6
+  ovs-vsctl add-port br0 vlan10 tag=10 -- set interface vlan10 type=internal
+  ip addr add 200.8.10.123/24 dev vlan10
+  ip link set vlan10 up
+
+  ovs-vsctl add-port br0 vlan20 tag=20 -- set interface vlan20 type=internal
+  ip addr add 200.8.20.123/24 dev vlan20
+  ip link set vlan20 up
+  
+  ovs-vsctl add-port br0 vlan99 tag=99 -- set interface vlan99 type=internal
+  ip addr add 200.8.99.123/24 dev vlan99
+  ip link set vlan99 up
   ``` 
 - Date : `Fait` le 04/11/2024
 
