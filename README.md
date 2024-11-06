@@ -1,4 +1,4 @@
-# Exercice S5-GNS3 (12, 24)
+# Exercice S5-GNS3
 
 ## 1 Liste des contraintes
 
