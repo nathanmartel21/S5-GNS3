@@ -108,8 +108,15 @@ sudo udhcpc -i eth0
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 12 (1pt) :** Les adresses IPv6 des interfaces réseaux des terminaux TD2 et TF2 sont dynamiques (autoconfiguration IPv6).
-- Non fait
-- Date :
+- Utiliser VyOS IPv6 sur VyOS avec SLAAC + DHCP6-PD du FAI :
+```
+set service router-advert interface eth1.10 prefix ::/64
+set service router-advert interface eth1.20 prefix ::/64
+set service router-advert interface eth1.10 name-server 2001:4860:4860::8844
+set service router-advert interface eth1.20 name-server 2001:4860:4860::8844
+```
+- Reload les endpoints.
+- Date : `Fait` le 06/11/2024
 
 **Contraintes 13 (2pts) :** Le terminal TD1 peut « pinguer » en IPv4 le terminal TF1. 
 - Dans le Open VSwitch, mettre en mode accès les endpoints (et en trunk les endpoints avec n sous interfaces)
