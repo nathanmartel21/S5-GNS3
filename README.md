@@ -218,8 +218,17 @@ set protocols ospfv3 redistribute connected
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 24 (2pts) :** Le routeur R1 est accessible en SSH depuis le terminal TA1.
-- Non fait
-- Date :
+- Pour télécharger dropbear (prendre le DNS de l'école) :
+```bash
+echo "nameserver 159.31.11.5" >> /etc/resolv.conf
+echo "nameserver 159.31.10.4" >> /etc/resolv.conf
+echo "nameserver 159.31.10.2" >> /etc/resolv.conf
+echo "nameserver 159.31.20.27" >> /etc/resolv.conf
+
+tce-load -wi dropbear
+dbclient vyos@200.8.99.254
+```
+- Date : `Fait` le 06/11/2024
 
 **AJOUT ROUTE PAR DÉFAUT** Default gateway vers R2 :
 
