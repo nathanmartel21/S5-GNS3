@@ -178,7 +178,7 @@ ovs-vsctl set port eth6 tag=20
 **Contraintes 19 (1pt) :** Le terminal TD1 peut « pinguer » en IPv6 le serveur TS2.
 - Cf contrainte 2
 - Date : `Fait` le 05/11/2024
-- 
+
 ### 1.3 Le routeur R1
 
 **Contraintes 20 (20pts) :** Le routeur R1 est une machine virtuelle VyOS. Il dispose de 2 interfaces Ethernet. Le routeur R1 est nommé.
@@ -251,7 +251,7 @@ exit
 ### 1.4 Le routeur R2
 
 **Contraintes 25 (20pts) :** Le routeur R2 est une machine virtuelle VyOS. Il dispose de 3 interfaces Ethernet. Le routeur R2 est nommé.
-- 
+- Fait
 - Date : `Fait` le 04/11/2024
 
 **Contraintes 26 (5pts) :** Le routeur R2 est connecté au réseau IPv4 N01 et N02.
