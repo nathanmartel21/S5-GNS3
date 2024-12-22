@@ -2,7 +2,7 @@
 
 ---------------
 
-```
+```bash
 tce-load –wi tc-install
 reboot
 
