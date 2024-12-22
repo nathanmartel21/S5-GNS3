@@ -1,4 +1,8 @@
+### OpenVSwitch2 :
 
+---------------
+
+```bash
 ovs-vsctl set port eth1 tag=10
 ovs-vsctl set port eth2 tag=10
 ovs-vsctl set port eth3 trunks=10,20,99
@@ -35,3 +39,4 @@ ovs-vsctl add-ports br0 vlan99 tag=99 – – bset interface vlan99 type=interna
 ovs-vsctl show
 ovs-vsctl remove port eth0 tag 10
 ovs-vsctl del-port vlan10
+```
