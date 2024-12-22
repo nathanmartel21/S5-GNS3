@@ -15,7 +15,8 @@
 
 #touch /opt/eth0.sh && chmod 755 /opt/eth0.sh
 > #!/bin/sh
-  pkill udhcpc
+
+> pkill udhcpc
 
 > sudo ip addr add 200.8.1.1/24 dev eth0
 
