@@ -13,6 +13,8 @@ tce-load -wi iproute2
 tce-load -wi iptables
 sudo modprobe ipv6
 
+echo "sudo modprobe ipv6" >> /opt/bootsync.sh
+
 touch /opt/eth0.sh && chmod 755 /opt/eth0.sh
 #!/bin/sh
 pkill udhcpc
