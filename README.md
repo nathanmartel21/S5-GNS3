@@ -308,6 +308,10 @@ exit
 
 **Contraintes 31 (1pt) :** La table de routage du routeur R2 dispose d’une route par défaut statique vers le réseau NAT/Cloud. La route par défaut est propagée en OSPF.
 - Fait automatiquement en requestant une @IP dhcp sur l'interface outside
+- Pour envoyer la route par défaut vers l'autre routeur :
+```bash
+set protocols ospf default-information originate
+```
 - Date : `Fait` le 03/11/2024
 
 ### 1.5 Les commutateurs
